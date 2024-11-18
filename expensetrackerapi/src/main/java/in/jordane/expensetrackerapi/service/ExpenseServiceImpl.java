@@ -1,6 +1,7 @@
 package in.jordane.expensetrackerapi.service;
 
 
+import in.jordane.expensetrackerapi.exceptions.ResourceNotFoundException;
 import in.jordane.expensetrackerapi.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import in.jordane.expensetrackerapi.entity.Expense;
 
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -30,7 +30,7 @@ public class ExpenseServiceImpl implements ExpenseService {
         if(expense.isPresent()){
             return expense.get();
         }
-        throw new RuntimeException("Expense is not found for the id " + id);
+        throw new ResourceNotFoundException("Expense is not found for the id " + id);
     }
 
     @Override
