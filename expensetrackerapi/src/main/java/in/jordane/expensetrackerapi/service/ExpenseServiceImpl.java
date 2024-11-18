@@ -3,6 +3,8 @@ package in.jordane.expensetrackerapi.service;
 
 import in.jordane.expensetrackerapi.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import in.jordane.expensetrackerapi.entity.Expense;
 
@@ -18,8 +20,8 @@ public class ExpenseServiceImpl implements ExpenseService {
     private ExpenseRepository expenseRepo;
 
     @Override
-    public List<Expense> getAlLExpenses(){
-        return  expenseRepo.findAll();
+    public Page<Expense> getAlLExpenses(Pageable page){
+        return  expenseRepo.findAll(page);
     }
 
     @Override
