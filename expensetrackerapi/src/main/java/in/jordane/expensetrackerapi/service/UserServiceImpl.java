@@ -3,6 +3,7 @@ package in.jordane.expensetrackerapi.service;
 import in.jordane.expensetrackerapi.entity.User;
 import in.jordane.expensetrackerapi.entity.UserModel;
 import in.jordane.expensetrackerapi.exceptions.ItemAlreadyExistsException;
+import in.jordane.expensetrackerapi.exceptions.ResourceNotFoundException;
 import in.jordane.expensetrackerapi.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,10 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(newUser);
     }
 
+    @Override
+    public User readUser(Long id) {
+       return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found for the id: " + id));
+    }
 
 
 }
