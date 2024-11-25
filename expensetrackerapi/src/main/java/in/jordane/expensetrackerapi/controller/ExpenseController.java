@@ -2,13 +2,13 @@ package in.jordane.expensetrackerapi.controller;
 
 import in.jordane.expensetrackerapi.entity.Expense;
 import in.jordane.expensetrackerapi.service.ExpenseService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.Date;
 import java.util.List;
 
