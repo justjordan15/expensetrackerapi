@@ -9,6 +9,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static java.lang.module.ModuleDescriptor.read;
+
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -39,6 +41,12 @@ public class UserServiceImpl implements UserService{
         existingUser.setPassword(user.getPassword() != null ? user.getPassword() : existingUser.getPassword());
         existingUser.setAge(user.getAge() != null ? user.getAge() : existingUser.getAge());
         return userRepository.save(existingUser);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        User existingUser = readUser(id);
+        userRepository.delete(existingUser);
     }
 
 
