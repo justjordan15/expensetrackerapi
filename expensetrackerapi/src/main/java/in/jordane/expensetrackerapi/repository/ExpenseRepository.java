@@ -21,4 +21,6 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
     //SELECT * FROM tbl_expense WHERE date BETWEEN 'startDate' and 'endDate'
     Page<Expense> findByDateBetween(Date startDate, Date endDate, Pageable page);
 
+    Page<Expense> findByUserId(Long userID, Pageable page);
+
 }
